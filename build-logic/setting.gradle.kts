@@ -1,6 +1,9 @@
+enableFeaturePreview("VERSION_CATALOGS")
+
 dependencyResolutionManagement {
     repositories {
         google()
+        gradlePluginPortal()
         mavenCentral()
     }
     versionCatalogs {

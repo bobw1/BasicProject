@@ -1,7 +1,15 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
+    `version-catalog`
     `kotlin-dsl`
+    `java-gradle-plugin`
+}
+
+repositories {
+    google()
+    gradlePluginPortal()
+    mavenCentral()
 }
 
 group = "com.basic.convention"
@@ -18,11 +26,11 @@ kotlin {
 }
 
 dependencies {
-    compileOnly(libs.android.gradlePlugin)
-    compileOnly(libs.android.tools.common)
-    compileOnly(libs.kotlin.gradlePlugin)
-    compileOnly(libs.ksp.gradlePlugin)
-    compileOnly(libs.room.gradlePlugin)
+    compileOnly("com.android.tools.build:gradle:8.5.2")
+    compileOnly("com.android.tools:common:31.5.2")
+    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0")
+    compileOnly("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:2.0.0-1.0.21")
+    compileOnly("androidx.room:room-gradle-plugin:2.6.1")
 }
 
 tasks {
@@ -35,16 +43,16 @@ tasks {
 gradlePlugin {
     plugins {
         register("androidApplication") {
-            id = "com.basic.application"
-            implementationClass = "AndroidApplicationConventionPlugin"
+            id = "basic.application"
+            implementationClass = "com.basic.convention.AndroidApplicationConventionPlugin"
         }
         register("androidFeature") {
-            id = "com.basic.feature"
-            implementationClass = "AndroidFeatureConventionPlugin"
+            id = "basic.feature"
+            implementationClass = "com.basic.convention.AndroidFeatureConventionPlugin"
         }
         register("androidRoom") {
-            id = "com.basic.room"
-            implementationClass = "AndroidRoomConventionPlugin"
+            id = "basic.room"
+            implementationClass = "com.basic.convention.AndroidRoomConventionPlugin"
         }
     }
 }

@@ -10,6 +10,7 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+    includeBuild("build-logic/convention")
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -19,12 +20,14 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Basic Project"
+rootProject.name = "basic"
 include(":app")
 include(":data:repository")
 include(":data:local-datasource")
 include(":data:remote-datasource")
 include(":data:dto")
 include(":domain")
-include(":build-logic")
-include(":build-logic:convention")
+include(":domain:model")
+include(":domain:usecase")
+include(":features")
+include(":features:testing")

@@ -7,7 +7,6 @@ import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.api.AndroidBasePlugin
 import com.basic.convention.utils.configureKotlinAndroid
 import com.basic.convention.utils.libs
-import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -19,6 +18,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
         with(target) {
             pluginManager.apply {
                 apply(libs.findPlugin("android.application"))
+                apply("com.android.library")
                 apply(libs.findPlugin("kotlin.android"))
                 apply(libs.findPlugin("hilt"))
                 apply(libs.findPlugin("ksp"))
